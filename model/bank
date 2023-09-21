@@ -1,0 +1,25 @@
+const Joi = require("joi");
+const mongoose = require("mongoose");
+
+const BankSchema = mongoose.Schema({
+   bank_name: String,
+   bank_account: String,
+   account_name: String,
+   phone: String,
+   created_date: { type: String, default: Date.now() },
+});
+
+const Banks = mongoose.model("Bank", BankSchema);
+
+const queryValidateBank = (data) => {
+   const schema = Joi.object({
+      bank_name: Joi.required(),
+      bank_account: Joi.required(),
+      account_name: Joi.required(),
+      phone: Joi.required(),
+   });
+   return schema.validate(data); 
+};
+
+exports.Banks = Banks;
+exports.queryValidateBank = queryValidateBank;
