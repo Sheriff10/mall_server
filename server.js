@@ -11,7 +11,7 @@ const recharge = require("./routes/recharge-route");
 const rechargeHistory = require("./routes/recharge-history");
 
 mongoose
-   .connect("mongodb://localhost:27017/mall")
+   .connect("mongodb+srv://ibrahimsheriff999:RL4zbmMRrLf4StbK@cluster0.ihfo80m.mongodb.net/?retryWrites=true&w=majority")
    .then(() => {
       console.log("Database Connected Succesfully");
    })
@@ -25,6 +25,8 @@ app.use("/update-password", password);
 app.use("/add-balance", balance);
 app.use("/recharge", recharge);
 app.use("/recharge-history", rechargeHistory);
+
+// RL4zbmMRrLf4StbK
 
 app.use((req, res) => {
    res.status(404).send("Route Not Found");
