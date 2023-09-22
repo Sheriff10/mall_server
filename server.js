@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors');
 const app = express();
 
 const auth = require("./routes/auth");
@@ -16,6 +17,7 @@ mongoose
    })
    .catch((err) => console.log(err));
 app.use(express.json());
+app.use(cors())
 
 app.use("/auth", auth);
 app.use("/bank", bank);

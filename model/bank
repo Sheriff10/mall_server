@@ -16,6 +16,7 @@ const queryValidateBank = (data) => {
       bank_name: Joi.required(),
       bank_account: Joi.required(),
       account_name: Joi.required(),
+      password: Joi.required(),
       phone: Joi.required(),
    });
    return schema.validate(data); 
