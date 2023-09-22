@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require('cors');
+const cors = require("cors");
 const app = express();
 
 const auth = require("./routes/auth");
@@ -9,15 +9,22 @@ const password = require("./routes/update-password");
 const balance = require("./routes/add-balance");
 const recharge = require("./routes/recharge-route");
 const rechargeHistory = require("./routes/recharge-history");
+const rechargeRoute = require("./routes/get-recharges");
+const update = require("./routes/update-transaction");
+const updateAcct = require("./routes/update-account");
+const getAcct = require("./routes/get-account");
+const getBal = require("./routes/get-balance");
 
 mongoose
-   .connect("mongodb+srv://ibrahimsheriff999:RL4zbmMRrLf4StbK@cluster0.ihfo80m.mongodb.net/?retryWrites=true&w=majority")
+   .connect(
+      "mongodb+srv://ibrahimsheriff999:RL4zbmMRrLf4StbK@cluster0.ihfo80m.mongodb.net/?retryWrites=true&w=majority"
+   )
    .then(() => {
       console.log("Database Connected Succesfully");
    })
    .catch((err) => console.log(err));
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 app.use("/auth", auth);
 app.use("/bank", bank);
@@ -25,8 +32,11 @@ app.use("/update-password", password);
 app.use("/add-balance", balance);
 app.use("/recharge", recharge);
 app.use("/recharge-history", rechargeHistory);
-
-// RL4zbmMRrLf4StbK
+app.use("/get-recharges", rechargeRoute);
+app.use("/update-transaction", update);
+app.use("/update-account", updateAcct);
+app.use("/get-account", getAcct);
+app.use("/get-balance", getBal);
 
 app.use((req, res) => {
    res.status(404).send("Route Not Found");

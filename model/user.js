@@ -5,7 +5,7 @@ const UserSchema = mongoose.Schema({
    username: String,
    phone: String,
    password: String,
-   balance: { type: Number, default: 0 },
+   balance: { type: Number, default: 500 },
    created_date: { type: String, default: Date.now() },
 });
 

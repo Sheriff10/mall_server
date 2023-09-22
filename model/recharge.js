@@ -6,6 +6,7 @@ const RechargeSchema = mongoose.Schema({
    amount: String,
    sender_name: String,
    phone: Number,
+   pending: { type: String, default: true },
    created_date: { type: String, default: Date.now() },
 });
 
