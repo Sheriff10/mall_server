@@ -9,7 +9,7 @@ router.get("/:phone", async (req, res) => {
 
       const user = await User.findOne({ phone });
       if (!user) return res.status(404).send("user not found");
-      res.send({balance: user.balance});
+      res.send({balance: user.balance, username: user.username});
    } catch (error) {
       console.log(error);
    }
